@@ -1,0 +1,47 @@
+version: '3.8'
+
+services:
+  webapp:
+    build: ./ui
+    environment:
+      CHOKIDAR_USEPOLLING: "true"
+    volumes:
+      - ./ui:/ui
+    ports:
+      - 3000:3000
+    image: webapp:ui_app
+    container_name: image_tagger_ui
+    command: npm start
+    depends_on:
+      - fh_api
+
+  fh_api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - 9999:9999
+    image: fh_api:fh_api
+    container_name: image_tagger_fh
+    depends_on:
+      - db
+      - scoring_api
+    command: /usr/local/bin/mainApp
+
+  scoring_api:
+    #WIP
+
+  db:
+#    For storage of class indexes
+    image: postgres:9.5-alpine
+    healthcheck:
+      test: [ "CMD", "pg_isready", "-q", "-d", "postgres", "-U", "root" ]
+      timeout: 45s
+      interval: 10s
+      retries: 10
+    restart: always
+    environment:
+      - POSTGRES_USER=root
+      - POSTGRES_PASSWORD=password
+    volumes:
+      - ./scripts/db:/docker-entrypoint-initdb.d/
