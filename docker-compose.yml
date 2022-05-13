@@ -29,7 +29,12 @@ services:
     command: /usr/local/bin/mainApp
 
   scoring_api:
-    #WIP
+    image: fixwa/resnet50sc:latest
+    restart: on-failure
+    depends_on:
+      - db
+    ports:
+      - 5100:5001
 
   db:
 #    For storage of class indexes
