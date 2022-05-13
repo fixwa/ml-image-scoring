@@ -1,4 +1,4 @@
-# Image Tagger 🔮
+# MachineLearning Image Scoring 🔮
 
 A set of applications (UI, Image Parser, ResNet50 model scoring API) that allow an analysis of images to obtain a "tag" for said image.
 
