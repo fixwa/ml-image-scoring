@@ -12,7 +12,7 @@ is a golang application to get the image file and parse (standardize/decode) it 
 
 ## ScoringAPI (scoring_api) 
 a deeplearning service that uses the ResNet50 architecture to score a TF model. This is based on the work of [Geert Baeke](https://blog.baeke.info/2019/01/02/creating-a-gpu-container-image-for-scoring-with-azure-machine-learning/)
-Consist of a container that uses the [Azure Machine Learning comuting service](https://docs.microsoft.com/en-us/azure/machine-learning/quickstart-create-resources) and a Python script that uses the [Keras Applications - ResNetV2](https://keras.io/api/applications/resnet/#resnet50v2-function) library to receive the 4D array payload and process (classify) the image.
+Consist of a container that uses the [Azure Machine Learning computing service](https://docs.microsoft.com/en-us/azure/machine-learning/quickstart-create-resources) and a Python script that uses the [Keras Applications - ResNetV2](https://keras.io/api/applications/resnet/#resnet50v2-function) library to receive the 4D array payload and process (classify) the image.
 
 To see all services in action:
 ```
